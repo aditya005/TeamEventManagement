@@ -10,10 +10,10 @@ var core_1 = require("@angular/core");
 var loginComponent = (function () {
     function loginComponent() {
     }
+    loginComponent = __decorate([
+        core_1.Component({})
+    ], loginComponent);
     return loginComponent;
 }());
-loginComponent = __decorate([
-    core_1.Component({})
-], loginComponent);
 exports.loginComponent = loginComponent;
 //# sourceMappingURL=login.component.js.map

@@ -102,8 +102,17 @@
     </Content>
     <Content Include="bs-config.json" />
     <Content Include="package.json" />
+    <Content Include="src\app\app.component.js" />
+    <Content Include="src\app\app.component.spec.js" />
+    <Content Include="src\app\app.module.js" />
+    <Content Include="src\app\Forget\Forget.html" />
+    <Content Include="src\app\Forget\Forget.js" />
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
+    <Content Include="src\app\Forget\Forget.js.map" />
+    <Content Include="src\app\app.component.js.map" />
+    <Content Include="src\app\app.component.spec.js.map" />
+    <Content Include="src\app\app.module.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -112,7 +121,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\Components\user.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.css" />
@@ -127,11 +135,8 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\Components\about.component.ts" />
-    <TypeScriptCompile Include="src\app\Components\user.component.ts" />
+    <TypeScriptCompile Include="src\app\Forget\Forget.ts" />
     <TypeScriptCompile Include="src\app\Login\login.component.ts" />
-    <TypeScriptCompile Include="src\app\Service\app.routing.ts" />
-    <TypeScriptCompile Include="src\app\Service\json.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>

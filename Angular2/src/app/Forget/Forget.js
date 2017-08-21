@@ -7,16 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var Forgetclass = (function () {
+    function Forgetclass() {
     }
-    AppComponent = __decorate([
+    Forgetclass = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "",
+            templateUrl: "Forget.html",
         })
-    ], AppComponent);
-    return AppComponent;
+    ], Forgetclass);
+    return Forgetclass;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.Forgetclass = Forgetclass;
+//# sourceMappingURL=Forget.js.map
