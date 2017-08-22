@@ -5,4 +5,5 @@
 })
 
 export class Forgetclass {
+    name: string = 'Naga';
 }

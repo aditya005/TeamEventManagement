@@ -107,12 +107,16 @@
     <Content Include="src\app\app.module.js" />
     <Content Include="src\app\Forget\Forget.html" />
     <Content Include="src\app\Forget\Forget.js" />
+    <Content Include="src\app\Login\login.component.js" />
+    <Content Include="src\main.js" />
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
     <Content Include="src\app\Forget\Forget.js.map" />
     <Content Include="src\app\app.component.js.map" />
     <Content Include="src\app\app.component.spec.js.map" />
     <Content Include="src\app\app.module.js.map" />
+    <Content Include="src\main.js.map" />
+    <Content Include="src\app\Login\login.component.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
