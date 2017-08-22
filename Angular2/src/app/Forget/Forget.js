@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Forgetclass = (function () {
     function Forgetclass() {
+        this.name = 'Naga';
     }
     Forgetclass = __decorate([
         core_1.Component({
