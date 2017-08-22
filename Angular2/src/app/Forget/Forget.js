@@ -11,12 +11,12 @@ var Forgetclass = (function () {
     function Forgetclass() {
         this.name = 'Naga';
     }
-    Forgetclass = __decorate([
-        core_1.Component({
-            templateUrl: "Forget.html",
-        })
-    ], Forgetclass);
     return Forgetclass;
 }());
+Forgetclass = __decorate([
+    core_1.Component({
+        templateUrl: "Forget.html",
+    })
+], Forgetclass);
 exports.Forgetclass = Forgetclass;
 //# sourceMappingURL=Forget.js.map

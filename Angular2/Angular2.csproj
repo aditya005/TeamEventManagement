@@ -108,6 +108,7 @@
     <Content Include="src\app\Forget\Forget.html" />
     <Content Include="src\app\Forget\Forget.js" />
     <Content Include="src\app\Login\login.component.js" />
+    <Content Include="src\app\Login\Login.html" />
     <Content Include="src\main.js" />
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
@@ -141,6 +142,7 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\Forget\Forget.ts" />
     <TypeScriptCompile Include="src\app\Login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\Login\login.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
