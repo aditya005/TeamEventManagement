@@ -1,7 +1,8 @@
 ﻿import { Component } from "@angular/core";
 
 @Component({
-    templateUrl: `Forget.html`,
+    selector: "forgot-component",
+    templateUrl: `././app/Forget/Forget.html`,
 })
 
 export class Forgetclass {

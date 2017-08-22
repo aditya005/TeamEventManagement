@@ -10,18 +10,29 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
+var login_component_1 = require("./Login/login.component");
+var Forget_1 = require("./Forget/Forget");
+var error_component_1 = require("./Error/error.component");
+//Route Table
+var appRoute = [
+    { path: "home", component: login_component_1.loginComponent },
+    { path: "forgotpassword", component: Forget_1.Forgetclass },
+    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "**", component: error_component_1.errorComponent }
+];
 var AppModule = (function () {
     function AppModule() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
-        })
-    ], AppModule);
     return AppModule;
 }());
+AppModule = __decorate([
+    core_1.NgModule({
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoute, { useHash: true })],
+        declarations: [app_component_1.AppComponent, login_component_1.loginComponent, Forget_1.Forgetclass, error_component_1.errorComponent],
+        bootstrap: [app_component_1.AppComponent]
+    })
+], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
