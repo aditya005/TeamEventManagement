@@ -2,7 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from "@angular/router"
+import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { loginComponent } from "./Login/login.component";
@@ -21,7 +21,7 @@ const appRoute: Routes = [
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoute, { useHash: true })],
     declarations: [AppComponent, loginComponent, Forgetclass, errorComponent],
-  bootstrap: [AppComponent ]
+    bootstrap: [AppComponent ]
 })
 export class AppModule { }
  
