@@ -11,14 +11,18 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+var auth_guard_1 = require("./Login/auth.guard");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./Login/login.component");
 var Forget_1 = require("./Forget/Forget");
 var error_component_1 = require("./Error/error.component");
+var authentication_service_1 = require("./Login/authentication.service");
+var login_service_1 = require("./Login/login.service");
+var logout_service_1 = require("./Login/logout.service");
 //Route Table
 var appRoute = [
     { path: "home", component: login_component_1.loginComponent },
-    { path: "forgotpassword", component: Forget_1.Forgetclass },
+    { path: "forgotpassword", component: Forget_1.Forgetclass, canActivate: [auth_guard_1.AuthGuard] },
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: error_component_1.errorComponent }
 ];
@@ -31,6 +35,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoute, { useHash: true })],
         declarations: [app_component_1.AppComponent, login_component_1.loginComponent, Forget_1.Forgetclass, error_component_1.errorComponent],
+        providers: [login_service_1.loginService, logout_service_1.logoutService, authentication_service_1.authenticationService, auth_guard_1.AuthGuard],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

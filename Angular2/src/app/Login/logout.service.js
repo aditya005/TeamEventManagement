@@ -10,23 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var logout_service_1 = require("../Login/logout.service");
-var Forgetclass = (function () {
-    function Forgetclass(_logout) {
-        this._logout = _logout;
-        this.data = "";
+var router_1 = require("@angular/router");
+require("rxjs/Rx");
+var logoutService = (function () {
+    function logoutService(_router) {
+        this._router = _router;
     }
-    Forgetclass.prototype.Logout = function () {
-        this._logout.logout();
+    logoutService.prototype.logout = function () {
+        console.log("Logout Started");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("userName");
+        this._router.navigate(["./home"]);
     };
-    return Forgetclass;
+    return logoutService;
 }());
-Forgetclass = __decorate([
-    core_1.Component({
-        selector: "forgot-component",
-        templateUrl: "././app/Forget/Forget.html"
-    }),
-    __metadata("design:paramtypes", [logout_service_1.logoutService])
-], Forgetclass);
-exports.Forgetclass = Forgetclass;
-//# sourceMappingURL=Forget.js.map
+logoutService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router])
+], logoutService);
+exports.logoutService = logoutService;
+//# sourceMappingURL=logout.service.js.map

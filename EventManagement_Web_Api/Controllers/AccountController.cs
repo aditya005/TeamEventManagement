@@ -373,6 +373,15 @@ namespace EventManagement_Web_Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("Auth")]
+        public bool Auth()
+        {
+            
+            return User.Identity.IsAuthenticated;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
