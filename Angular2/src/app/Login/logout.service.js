@@ -10,27 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 require("rxjs/Rx");
 var logoutService = (function () {
-    function logoutService(http) {
-        this._http = null;
-        this._http = http;
+    function logoutService(_router) {
+        this._router = _router;
     }
     logoutService.prototype.logout = function () {
         console.log("Logout Started");
-        var token = localStorage.getItem("access_token");
-        var header = new http_1.Headers({ "Authorization": "Bearer " + token });
         localStorage.removeItem("access_token");
         localStorage.removeItem("userName");
-        var ops = new http_1.RequestOptions({ headers: header });
-        return this._http.post("http://localhost:55879/api/Account/Logout", ops);
+        this._router.navigate(["./home"]);
     };
     return logoutService;
 }());
 logoutService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [router_1.Router])
 ], logoutService);
 exports.logoutService = logoutService;
 //# sourceMappingURL=logout.service.js.map

@@ -1,27 +1,17 @@
 ﻿import { Component } from "@angular/core";
-import { authenticationService } from "../login/authentication.service"
+import { logoutService } from "../Login/logout.service";
 
 @Component({
     selector: "forgot-component",
-    templateUrl: `././app/Forget/Forget.html`,
-    providers: [authenticationService]
+    templateUrl: `././app/Forget/Forget.html`
 })
 
 export class Forgetclass {
     data: string = ""
-    constructor(private _auth: authenticationService) {
-        this._auth.auth().subscribe(function (res) {
-            console.log(res);
-
-        }, function (err) {
-            console.log(err);
-            window.location.href = "/home";
-        })
-
-
+    constructor(private _logout: logoutService) {
     }
     Logout() {
-        
+        this._logout.logout();
     }
     
 }

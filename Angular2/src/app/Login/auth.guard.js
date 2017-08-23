@@ -10,23 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var logout_service_1 = require("../Login/logout.service");
-var Forgetclass = (function () {
-    function Forgetclass(_logout) {
-        this._logout = _logout;
-        this.data = "";
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("../Login/authentication.service");
+var AuthGuard = (function () {
+    function AuthGuard(_authService, router) {
+        this._authService = _authService;
+        this.router = router;
     }
-    Forgetclass.prototype.Logout = function () {
-        this._logout.logout();
+    AuthGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return this._authService.auth().take(1).do(function (allowed) {
+            console.log("Redirecting");
+            if (!allowed) {
+                _this.router.navigate(["/home"]);
+            }
+            ;
+        });
     };
-    return Forgetclass;
+    return AuthGuard;
 }());
-Forgetclass = __decorate([
-    core_1.Component({
-        selector: "forgot-component",
-        templateUrl: "././app/Forget/Forget.html"
-    }),
-    __metadata("design:paramtypes", [logout_service_1.logoutService])
-], Forgetclass);
-exports.Forgetclass = Forgetclass;
-//# sourceMappingURL=Forget.js.map
+AuthGuard = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [authentication_service_1.authenticationService, router_1.Router])
+], AuthGuard);
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth.guard.js.map

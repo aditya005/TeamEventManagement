@@ -144,6 +144,7 @@
     <TypeScriptCompile Include="src\app\Error\error.component.ts" />
     <TypeScriptCompile Include="src\app\Forget\Forget.ts" />
     <TypeScriptCompile Include="src\app\Login\authentication.service.ts" />
+    <TypeScriptCompile Include="src\app\Login\auth.guard.ts" />
     <TypeScriptCompile Include="src\app\Login\login.component.ts" />
     <TypeScriptCompile Include="src\app\Login\login.service.ts" />
     <TypeScriptCompile Include="src\app\Login\logout.service.ts" />

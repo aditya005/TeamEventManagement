@@ -10,19 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var login_service_1 = require("./login.service");
 var loginComponent = (function () {
-    function loginComponent(_loginService) {
-        this._loginService = _loginService;
+    function loginComponent(loginService, router) {
         this.userName = "";
         this.password = "";
+        this._loginService = loginService;
+        this._router = router;
     }
     loginComponent.prototype.clicked = function () {
+        var v = this;
         this._loginService.getToken(this.userName, this.password).subscribe(function (res) {
+            debugger;
             console.log(res.access_token);
             console.log(res.userName);
             localStorage.setItem("access_token", res.access_token);
             localStorage.setItem("userName", res.userName);
+            v._router.navigate(["/forgotpassword"]);
         }, function (err) {
             console.log(err);
         });
@@ -32,10 +37,10 @@ var loginComponent = (function () {
 loginComponent = __decorate([
     core_1.Component({
         selector: "login-component",
-        templateUrl: "./app/Login/Login.html",
-        providers: [login_service_1.loginService]
+        templateUrl: "./app/Login/Login.html"
     }),
-    __metadata("design:paramtypes", [login_service_1.loginService])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [login_service_1.loginService, router_1.Router])
 ], loginComponent);
 exports.loginComponent = loginComponent;
 //# sourceMappingURL=login.component.js.map

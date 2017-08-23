@@ -18,4 +18,6 @@ export class authenticationService {
             let ops = new RequestOptions({ headers: header })
             return this._http.get("http://localhost:55879/api/Account/Auth", ops).map(res => res.json());
     }
+
+ 
 }
