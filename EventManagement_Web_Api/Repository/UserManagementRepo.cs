@@ -102,7 +102,11 @@ namespace EventManagement_Web_Api.Repository
             }
 
             Ur.Status = ur.Status;
-            setRole(ur.UserName, ur.Role);
+            if(ur.Role != null)
+            {
+                setRole(ur.UserName, ur.Role);
+            }
+            
 
             db.SaveChanges();
         }
