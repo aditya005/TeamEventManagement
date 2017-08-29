@@ -1,0 +1,226 @@
+﻿<div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        UserName/Email
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>
+                        Is Active ?
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Phone Number
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ur of ulist">
+                    <td>
+                        {{ur.UserName}}
+                    </td>
+                    <td>
+                        {{ur.Role}}
+                    </td>
+                    <td>
+                        {{ur.Status}}
+                    </td>
+                    <td>
+                        {{ur.FirstName}}
+                    </td>
+                    <td>
+                        {{ur.LastName}}
+                    </td>
+                    <td>
+                        {{ur.Gender}}
+                    </td>
+                    <td>
+                        {{ur.Age}}
+                    </td>
+                    <td>
+                        {{ur.PhoneNumber}}
+                    </td>
+                    <td>
+                        {{ur.Address}}
+                    </td>
+                    <td>
+                        <input type="button" name="getUsers" value="Get Details" (click)="getUser(ur)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" name="Create" value="Create User" (click)="Creating()"/>
+    </div>
+    <div *ngIf="user != null">
+        <h3>User Details</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide"/>
+        <table border="1">
+            <tr>
+                <td>User Name</td>
+                <td>{{user.UserName}}</td>
+                <td *ngIf="edit"><input type="text" name="UserName" [(ngModel)]="editUser.UserName" /></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>{{user.Role}}</td>
+                <td *ngIf="edit">
+                    <select name="Role" [(ngModel)]="editUser.Role">
+                        <option value="admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Is Active</td>
+                <td>{{user.Status}}</td>
+                <td *ngIf="edit">
+                    <select name="Status" [(ngModel)]="editUser.Status">
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>{{user.FirstName}}</td>
+                <td *ngIf="edit"><input type="text" name="First Name" [(ngModel)]="editUser.FirstName" /></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{user.LastName}}</td>
+                <td *ngIf="edit"><input type="text" name="Last Name" [(ngModel)]="editUser.LastName" /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{user.Gender}}</td>
+                <td *ngIf="edit">
+                    <select name="Gender" [(ngModel)]="editUser.Gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>{{user.Age}}</td>
+                <td *ngIf="edit"><input type="number" name="Age" [(ngModel)]="editUser.Age" /></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>{{user.PhoneNumber}}</td>
+                <td *ngIf="edit"><input type="number" name="PhoneNumber" [(ngModel)]="editUser.PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{user.Address}}</td>
+                <td *ngIf="edit"><textarea  name="Address" [(ngModel)]="editUser.Address" ></textarea></td>
+            </tr>
+            <tr *ngIf="edit">
+                <td>Password</td>
+                <td></td>
+                <td *ngIf="edit">
+                    Password: <input type="password" name="Password" [(ngModel)]="editUser.Password" />
+                    Conform Password: <input type="password" name="Password" [(ngModel)]="editUser.ConfirmPassword" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="button" name="Edit User" value="Edit" (click)="Editing()"  *ngIf="!edit" />
+                    <input type="button" name="Update User" value="Update" (click) ="Updating()" *ngIf="edit" />
+                
+                    <input type="button" name="Delete User" value="Delete" (click)="Deleting()" *ngIf="!edit"/>
+                    <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" *ngIf="edit" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="create">
+        <h3>Create User</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide" />
+        <table border="1">
+            <tr>
+                <td>Email ID(Also your UserId)</td>
+                <td><input type="text" name="EMail_Id" [(ngModel)]="createUser.UserName" /></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>
+                    <select name="Role" [(ngModel)]="createUser.Role">
+                        <option value="admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Is Active</td>
+                <td>
+                    <select name="Status" [(ngModel)]="createUser.Status">
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="First Name" [(ngModel)]="createUser.FirstName" /></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="Last Name" [(ngModel)]="createUser.LastName" /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select name="Gender" [(ngModel)]="createUser.Gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="number" name="Age" [(ngModel)]="createUser.Age" /></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="number" name="PhoneNumber" [(ngModel)]="createUser.PhoneNumber" /></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="Address" [(ngModel)]="createUser.Address"></textarea></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    Password: <input type="password" name="Password" [(ngModel)]="createUser.Password" />
+                    Conform Password: <input type="password" name="Password" [(ngModel)]="createUser.ConfirmPassword" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="button" name="Edit User" value="Create" (click)="Submiting(createUser)"/>
+                    <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -110,6 +110,7 @@
     <Content Include="src\app\Login\login.component.js" />
     <Content Include="src\app\Login\Login.html" />
     <Content Include="src\app\Error\Error.html" />
+    <Content Include="src\app\UserManagement\usermanagement.component.html" />
     <Content Include="src\main.js" />
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
@@ -148,11 +149,14 @@
     <TypeScriptCompile Include="src\app\Login\login.component.ts" />
     <TypeScriptCompile Include="src\app\Login\login.service.ts" />
     <TypeScriptCompile Include="src\app\Login\logout.service.ts" />
+    <TypeScriptCompile Include="src\app\UserManagement\usermanagement.component.ts" />
+    <TypeScriptCompile Include="src\app\UserManagement\usermanagement.service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

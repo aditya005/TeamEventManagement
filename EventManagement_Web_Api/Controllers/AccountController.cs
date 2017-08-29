@@ -153,7 +153,8 @@ namespace EventManagement_Web_Api.Controllers
                 Age = model.Age,
                 Gender = model.Gender,
                 Address = model.Address,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                Status = model.Status
             };
             
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -239,14 +240,22 @@ namespace EventManagement_Web_Api.Controllers
             try
             {
                 repo.editUser(ur);
-                IdentityResult result = UserManager.AddPassword(repo.getUserId(UserName), ur.Password);
-                if (result.Succeeded)
+                if(ur.Password!= null)
                 {
+                    IdentityResult result = UserManager.AddPassword(repo.getUserId(UserName), ur.Password);
+                    if (result.Succeeded)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.Accepted);
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    }
+
+                }else {
                     return Request.CreateResponse(HttpStatusCode.Accepted);
-                }else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
+               
                 
 
             }
