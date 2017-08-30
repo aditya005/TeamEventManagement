@@ -1,25 +1,30 @@
-﻿<div>
-    <table>
-        <tr>
-            <td>
-                User Name
-            </td>
-            <td>
-                <input type="text" [(ngModel)]="userName" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Password
-            </td>
-            <td>
-                <input type="password" [(ngModel)]="password" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="button" (click)="clicked()" value="Login" />
-            </td>
-        </tr>
-    </table>
+﻿<div class="container">
+    <div class="col-xs-2 col-lg-3">.</div>
+    <div class="col-xs-8 col-lg-6">
+        
+        <table border="1" class="table text-center">
+            <caption><h3 class="text-center">User Login</h3></caption>
+            <tr>
+                <td>
+                    <label>User Name</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="userName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" [(ngModel)]="password" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" (click)="clicked()" value="Login" />
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
