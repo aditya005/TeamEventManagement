@@ -13,12 +13,14 @@ export class userManagementComponent implements OnInit {
     create: boolean = false;
     editUser: any = {};
     createUser: any = {};
-    constructor(private _urserManagement: userManagementService) {}
+    constructor(private _urserManagement: userManagementService) {
+
+    }
     ngOnInit() {
         this._urserManagement.getUsers(null).subscribe((res) => this.ulist = res);
     }
     getUser(obj: any) {
-       
+        this.create = false;
         this.user = obj;
         this.editUser.UserName = this.user.UserName;
         this.editUser.FirstName = this.user.FirstName;
@@ -74,10 +76,13 @@ export class userManagementComponent implements OnInit {
     }
     Hiding() {
         this.user = null;
+        this.create = false;
     }
 
     Creating() {
         this.create = true;
+        this.user = null;
+        this.edit = false;
     }
     Submiting(obj: any) {
         this.createUser.Email = this.createUser.UserName;

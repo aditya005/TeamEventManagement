@@ -26,6 +26,7 @@ var userManagementComponent = (function () {
         this._urserManagement.getUsers(null).subscribe(function (res) { return _this.ulist = res; });
     };
     userManagementComponent.prototype.getUser = function (obj) {
+        this.create = false;
         this.user = obj;
         this.editUser.UserName = this.user.UserName;
         this.editUser.FirstName = this.user.FirstName;
@@ -77,9 +78,12 @@ var userManagementComponent = (function () {
     };
     userManagementComponent.prototype.Hiding = function () {
         this.user = null;
+        this.create = false;
     };
     userManagementComponent.prototype.Creating = function () {
         this.create = true;
+        this.user = null;
+        this.edit = false;
     };
     userManagementComponent.prototype.Submiting = function (obj) {
         var _this = this;
