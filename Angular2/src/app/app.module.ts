@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
 
-import { AuthGuard } from "./Login/auth.guard"
+import { AuthGuard } from "./Login/auth.guard";
 
 import { AppComponent } from './app.component';
 import { loginComponent } from "./Login/login.component";
@@ -15,7 +15,7 @@ import { userManagementComponent } from "./UserManagement/usermanagement.compone
 import { authenticationService } from "./Login/authentication.service";
 import { loginService } from "./Login/login.service";
 import { logoutService } from "./Login/logout.service";
-import { userManagementService } from "./UserManagement/usermanagement.service"
+import { userManagementService } from "./UserManagement/usermanagement.service";
 
 //Route Table
 const appRoute: Routes = [
