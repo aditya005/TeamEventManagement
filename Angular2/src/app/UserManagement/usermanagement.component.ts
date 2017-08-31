@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { userManagementService } from "./usermanagement.service";
+//import { Popup } from "ng2-opd-popup";
 
 @Component({
     selector: "um-component",
@@ -17,8 +18,10 @@ export class userManagementComponent implements OnInit {
 
     }
     ngOnInit() {
-        this._urserManagement.getUsers(null).subscribe((res) => this.ulist = res);
+        this._urserManagement.getUsers(null).subscribe((res) => { this.ulist = res; });
     }
+
+
     getUser(obj: any) {
         this.create = false;
         this.user = obj;
@@ -61,32 +64,37 @@ export class userManagementComponent implements OnInit {
             
             var ur = this.user;
             var lur = this.editUser;
-            this._urserManagement.editUser(this.editUser).subscribe(function (res) { alert("Updated Successfully"); lur = ur; console.log(res);}, function (error) { alert(error) });
+            this._urserManagement.editUser(this.editUser).subscribe((res) => { alert("Updated Successfully"); lur = ur; console.log(res); this.ngOnInit(); }, function (error) { console.log(error); });
             this.Canceling();
             this.Hiding();
+            
         }
-        
+       
     }
     Deleting() {
-        console.log("Deleting");
-        this._urserManagement.deleteUser(this.editUser.UserName).subscribe(function (res) { alert("Deleted Successfully"); console.log(res); }, function (error) { alert(error) });;
-        this.Canceling();
-        this.Hiding();
-        
+        if (confirm("Are you sure you want to delete user : " + this.editUser.UserName + " ?")) {
+
+            this._urserManagement.deleteUser(this.editUser.UserName).subscribe((res) => { alert("Deleted Successfully"); console.log(res); this.ngOnInit(); }, function (error) { console.log(error) });;
+            this.Canceling();
+            this.Hiding();
+        }      
     }
+
     Hiding() {
         this.user = null;
         this.create = false;
     }
 
     Creating() {
+        
         this.create = true;
         this.user = null;
         this.edit = false;
     }
     Submiting(obj: any) {
         this.createUser.Email = this.createUser.UserName;
-        this._urserManagement.createUser(obj).subscribe((res) => { console.log(res); this.create = false; });
+        this._urserManagement.createUser(obj).subscribe((res) => { console.log(res); this.create = false; this.ngOnInit(); });
         
     }
+ 
 }

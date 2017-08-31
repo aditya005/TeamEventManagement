@@ -19,7 +19,7 @@ var userManagementService = (function () {
         this._ops = null;
         this._http = http;
         this._header = new http_1.Headers({ "Content-Type": "application/json" });
-        this._ops = new http_1.RequestOptions({ headers: this._header });
+        this._ops = new http_1.RequestOptions({ "headers": this._header });
     }
     userManagementService.prototype.getUsers = function (UserName) {
         console.log("UserManagement Get Service Started");
@@ -32,15 +32,15 @@ var userManagementService = (function () {
     };
     userManagementService.prototype.createUser = function (new_obj) {
         console.log("UserManagement Create Service Started");
-        return this._http.post("http://localhost:55879/api/Account/UserManagement", new_obj, this._ops).map(function (res) { return res.json(); });
+        return this._http.post("http://localhost:55879/api/Account/UserManagement", new_obj, this._ops);
     };
     userManagementService.prototype.editUser = function (obj) {
         console.log("UserManagement Update Service Started");
-        return this._http.put("http://localhost:55879/api/Account/UserManagement?userName=" + obj.UserName, obj, this._ops).map(function (res) { return res.json(); });
+        return this._http.put("http://localhost:55879/api/Account/UserManagement?userName=" + obj.UserName, obj, this._ops);
     };
     userManagementService.prototype.deleteUser = function (UserName) {
         console.log("UserManagement Delete Service Started");
-        return this._http.delete("http://localhost:55879/api/Account/UserManagement?userName=" + UserName, this._ops).map(function (res) { return res.json(); });
+        return this._http.delete("http://localhost:55879/api/Account/UserManagement?userName=" + UserName, this._ops);
     };
     return userManagementService;
 }());

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var usermanagement_service_1 = require("./usermanagement.service");
+//import { Popup } from "ng2-opd-popup";
 var userManagementComponent = (function () {
     function userManagementComponent(_urserManagement) {
         this._urserManagement = _urserManagement;
@@ -23,7 +24,7 @@ var userManagementComponent = (function () {
     }
     userManagementComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._urserManagement.getUsers(null).subscribe(function (res) { return _this.ulist = res; });
+        this._urserManagement.getUsers(null).subscribe(function (res) { _this.ulist = res; });
     };
     userManagementComponent.prototype.getUser = function (obj) {
         this.create = false;
@@ -57,6 +58,7 @@ var userManagementComponent = (function () {
         this.createUser = {};
     };
     userManagementComponent.prototype.Updating = function () {
+        var _this = this;
         console.log("Updating");
         if (this.editUser.Password != this.editUser.ConfirmPassword) {
             this.Editing();
@@ -64,17 +66,19 @@ var userManagementComponent = (function () {
         else {
             var ur = this.user;
             var lur = this.editUser;
-            this._urserManagement.editUser(this.editUser).subscribe(function (res) { alert("Updated Successfully"); lur = ur; console.log(res); }, function (error) { alert(error); });
+            this._urserManagement.editUser(this.editUser).subscribe(function (res) { alert("Updated Successfully"); lur = ur; console.log(res); _this.ngOnInit(); }, function (error) { console.log(error); });
             this.Canceling();
             this.Hiding();
         }
     };
     userManagementComponent.prototype.Deleting = function () {
-        console.log("Deleting");
-        this._urserManagement.deleteUser(this.editUser.UserName).subscribe(function (res) { alert("Deleted Successfully"); console.log(res); }, function (error) { alert(error); });
-        ;
-        this.Canceling();
-        this.Hiding();
+        var _this = this;
+        if (confirm("Are you sure you want to delete user : " + this.editUser.UserName + " ?")) {
+            this._urserManagement.deleteUser(this.editUser.UserName).subscribe(function (res) { alert("Deleted Successfully"); console.log(res); _this.ngOnInit(); }, function (error) { console.log(error); });
+            ;
+            this.Canceling();
+            this.Hiding();
+        }
     };
     userManagementComponent.prototype.Hiding = function () {
         this.user = null;
@@ -88,7 +92,7 @@ var userManagementComponent = (function () {
     userManagementComponent.prototype.Submiting = function (obj) {
         var _this = this;
         this.createUser.Email = this.createUser.UserName;
-        this._urserManagement.createUser(obj).subscribe(function (res) { console.log(res); _this.create = false; });
+        this._urserManagement.createUser(obj).subscribe(function (res) { console.log(res); _this.create = false; _this.ngOnInit(); });
     };
     return userManagementComponent;
 }());

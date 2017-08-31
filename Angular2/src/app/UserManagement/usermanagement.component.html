@@ -72,6 +72,8 @@
         </table>
         <input type="button" name="Create" value="Create User" (click)="Creating()"/>
     </div>
+ 
+
     <div *ngIf="user != null" class="row">
         <h3>User Details</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide"/>
         <table border="1" class="table">
@@ -160,75 +162,81 @@
     </div>
     <div *ngIf="create" class="row">
         <h3>Create User</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide" />
-        <table border="1" class="table">
-            <tr>
-                <td><label>Email ID(Also your UserId)</label></td>
-                <td><input type="text" name="EMail_Id" [(ngModel)]="createUser.UserName" /></td>
-            </tr>
-            <tr>
-                <td><label>Role</label></td>
-                <td>
-                    <select name="Role" [(ngModel)]="createUser.Role">
-                        <option value="admin">Admin</option>
-                        <option value="User">User</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Is Active</label></td>
-                <td>
-                    <select name="Status" [(ngModel)]="createUser.Status">
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>First Name</label></td>
-                <td><input type="text" name="First Name" [(ngModel)]="createUser.FirstName" /></td>
-            </tr>
-            <tr>
-                <td><label>Last Name</label></td>
-                <td><input type="text" name="Last Name" [(ngModel)]="createUser.LastName" /></td>
-            </tr>
-            <tr>
-                <td><label>Gender</label></td>
-                <td>
-                    <select name="Gender" [(ngModel)]="createUser.Gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Age</label></td>
-                <td><input type="number" name="Age" [(ngModel)]="createUser.Age" /></td>
-            </tr>
-            <tr>
-                <td><label>Phone Number</label></td>
-                <td><input type="number" name="PhoneNumber" [(ngModel)]="createUser.PhoneNumber" /></td>
-            </tr>
-            <tr>
-                <td><label>Address</label></td>
-                <td><textarea name="Address" [(ngModel)]="createUser.Address"></textarea></td>
-            </tr>
-            <tr>
-                <td><label>Password</label></td>
-                <td>
-                    <span class="col-xs-6">
-                        <label class="col-xs-12">Password</label> <input type="password" name="Password" [(ngModel)]="createUser.Password"  class="col-xs-12"/>
-                    </span>
-                    <span class="col-xs-6">
-                        <label class="col-xs-12"> Confirm Password</label><input type="password" name="Password" [(ngModel)]="createUser.ConfirmPassword"  class="col-xs-12"/>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <input type="button" name="Edit User" value="Create" (click)="Submiting(createUser)"/>
-                    <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()"/>
-                </td>
-            </tr>
-        </table>
-    </div>
+        <form (ngSubmit)="Submiting(createUser)">
+            <table border="1" class="table">
+                <tr>
+                    <td><label>Email ID(Also your UserId)</label></td>
+                    <td><input type="text" name="EMail_Id" [(ngModel)]="createUser.UserName" required /></td>
+                </tr>
+                <tr>
+                    <td><label>Role</label></td>
+                    <td>
+                        <select name="Role" [(ngModel)]="createUser.Role" required>
+                            <option value="admin">Admin</option>
+                            <option value="User">User</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Is Active</label></td>
+                    <td>
+                        <select name="Status" [(ngModel)]="createUser.Status" required>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td><input type="text" name="First Name" [(ngModel)]="createUser.FirstName" required /></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td><input type="text" name="Last Name" [(ngModel)]="createUser.LastName" required /></td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td>
+                        <select name="Gender" [(ngModel)]="createUser.Gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Age</label></td>
+                    <td><input type="number" name="Age" [(ngModel)]="createUser.Age" required /></td>
+                </tr>
+                <tr>
+                    <td><label>Phone Number</label></td>
+                    <td><input type="number" name="PhoneNumber" [(ngModel)]="createUser.PhoneNumber" required /></td>
+                </tr>
+                <tr>
+                    <td><label>Address</label></td>
+                    <td><textarea name="Address" [(ngModel)]="createUser.Address" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label>Password</label></td>
+                    <td>
+                        <span class="col-xs-6">
+                            <label class="col-xs-12">Password</label> <input type="password" name="Password" [(ngModel)]="createUser.Password" required class="col-xs-12" />
+                        </span>
+                        <span class="col-xs-6">
+                            <label class="col-xs-12"> Confirm Password</label><input type="password" name="Password" [(ngModel)]="createUser.ConfirmPassword" required class="col-xs-12" />
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="submit" name="Edit User" value="Create"/>
+                        <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+</div>
+
+  
+
 </div>
