@@ -9,7 +9,7 @@
                     <label>User Name</label>
                 </td>
                 <td>
-                    <input type="text" [(ngModel)]="userName" />
+                    <input type="text" [(ngModel)]="userName" class="form-control" />
                 </td>
             </tr>
             <tr>
@@ -17,12 +17,12 @@
                     <label>Password</label>
                 </td>
                 <td>
-                    <input type="password" [(ngModel)]="password" />
+                    <input type="password" [(ngModel)]="password" class="form-control"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="button" (click)="clicked()" value="Login" />
+                    <input type="button" (click)="clicked()" value="Login" class="btn btn-default"/>
                 </td>
             </tr>
         </table>

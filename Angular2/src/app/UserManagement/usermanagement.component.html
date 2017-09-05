@@ -1,6 +1,7 @@
 ﻿<div class="container">
+    <input type="button" name="Create" value="Create User" (click)="Creating()" class="btn btn-info pull-right" />
     <div class="row">
-        <table border="1" class="table">
+        <table border="1" class="table table-responsive">
             <thead>
                 <tr>
                     <th>
@@ -65,113 +66,116 @@
                         {{ur.Address}}
                     </td>
                     <td>
-                        <input type="button" name="getUsers" value="Get Details" (click)="getUser(ur)" />
+                        <input type="button" name="getUsers" value="Get Details" (click)="getUser(ur)" class="btn btn-info" />
                     </td>
                 </tr>
             </tbody>
         </table>
-        <input type="button" name="Create" value="Create User" (click)="Creating()"/>
+        
     </div>
  
 
     <div *ngIf="user != null" class="row">
-        <h3>User Details</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide"/>
-        <table border="1" class="table">
-            <tr>
-                <td><label>Email Id(UserId)</label></td>
-                <td>{{user.UserName}}</td>
-                <td *ngIf="edit"><input type="text" name="UserName" readonly="readonly" [(ngModel)]="editUser.UserName" /></td>
-            </tr>
-            <tr>
-                <td><label>Role</label></td>
-                <td>{{user.Role}}</td>
-                <td *ngIf="edit">
-                    <select name="Role" [(ngModel)]="editUser.Role">
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Is Active</label></td>
-                <td>{{user.Status}}</td>
-                <td *ngIf="edit">
-                    <select name="Status" [(ngModel)]="editUser.Status">
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>First Name</label></td>
-                <td>{{user.FirstName}}</td>
-                <td *ngIf="edit"><input type="text" name="First Name" [(ngModel)]="editUser.FirstName" /></td>
-            </tr>
-            <tr>
-                <td><label>Last Name</label></td>
-                <td>{{user.LastName}}</td>
-                <td *ngIf="edit"><input type="text" name="Last Name" [(ngModel)]="editUser.LastName" /></td>
-            </tr>
-            <tr>
-                <td><label>Gender</label></td>
-                <td>{{user.Gender}}</td>
-                <td *ngIf="edit">
-                    <select name="Gender" [(ngModel)]="editUser.Gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Age</label></td>
-                <td>{{user.Age}}</td>
-                <td *ngIf="edit"><input type="number" name="Age" [(ngModel)]="editUser.Age" /></td>
-            </tr>
-            <tr>
-                <td><label>Phone Number</label></td>
-                <td>{{user.PhoneNumber}}</td>
-                <td *ngIf="edit"><input type="number" name="PhoneNumber" [(ngModel)]="editUser.PhoneNumber" /></td>
-            </tr>
-            <tr>
-                <td><label>Address</label></td>
-                <td>{{user.Address}}</td>
-                <td *ngIf="edit"><textarea  name="Address" [(ngModel)]="editUser.Address" ></textarea></td>
-            </tr>
-            <tr *ngIf="edit">
-                <td><label>Password</label></td>
-                <td></td>
-                <td *ngIf="edit">
-                    <span class="col-xs-6">
-                        <label  class="col-xs-12">Password </label> <input type="password" name="edit_Password" [(ngModel)]="editUser.Password" class="col-xs-12"/>
-                    </span>
-                    <span class="col-xs-6">
-                        <label  class="col-xs-12">Confirm Password </label><input type="password" name="edit_Password" [(ngModel)]="editUser.ConfirmPassword" class="col-xs-12" />
-                    </span>
-                 
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <input type="button" name="Edit User" value="Edit" (click)="Editing()"  *ngIf="!edit" />
-                    <input type="button" name="Update User" value="Update" (click) ="Updating()" *ngIf="edit" />
-                
-                    <input type="button" name="Delete User" value="Delete" (click)="Deleting()" *ngIf="!edit"/>
-                    <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" *ngIf="edit" />
-                </td>
-            </tr>
-        </table>
+        <h3>User Details</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide" class="btn btn-danger pull-right"/>
+        <form (ngSubmit)="Updating()">
+            <table border="1" class="table">
+                <tr>
+                    <td><label>Email Id(UserId)</label></td>
+                    <td>{{user.UserName}}</td>
+                    <td *ngIf="edit"><input type="text" name="UserName" readonly="readonly" [(ngModel)]="editUser.UserName" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><label>Role</label></td>
+                    <td>{{user.Role}}</td>
+                    <td *ngIf="edit">
+                        <select name="Role" [(ngModel)]="editUser.Role" class="form-control" >
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Is Active</label></td>
+                    <td>{{user.Status}}</td>
+                    <td *ngIf="edit">
+                        <select name="Status" [(ngModel)]="editUser.Status" class="form-control" >
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td>{{user.FirstName}}</td>
+                    <td *ngIf="edit"><input type="text" name="First Name" [(ngModel)]="editUser.FirstName" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td>{{user.LastName}}</td>
+                    <td *ngIf="edit"><input type="text" name="Last Name" [(ngModel)]="editUser.LastName" class="form-control"  /></td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td>{{user.Gender}}</td>
+                    <td *ngIf="edit">
+                        <select name="Gender" [(ngModel)]="editUser.Gender" class="form-control" >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Age</label></td>
+                    <td>{{user.Age}}</td>
+                    <td *ngIf="edit"><input type="number" name="Age" [(ngModel)]="editUser.Age" class="form-control"  /></td>
+                </tr>
+                <tr>
+                    <td><label>Phone Number</label></td>
+                    <td>{{user.PhoneNumber}}</td>
+                    <td *ngIf="edit"><input type="number" name="PhoneNumber" [(ngModel)]="editUser.PhoneNumber"  class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td><label>Address</label></td>
+                    <td>{{user.Address}}</td>
+                    <td *ngIf="edit"><textarea name="Address" [(ngModel)]="editUser.Address" class="form-control" ></textarea></td>
+                </tr>
+                <tr *ngIf="edit">
+                    <td><label>Password</label></td>
+                    <td></td>
+                    <td *ngIf="edit">
+                        <span class="col-xs-6">
+                            <label class="col-xs-12">Password </label> <input type="password" name="edit_Password" [(ngModel)]="editUser.Password" class="col-xs-12 form-control" />
+                        </span>
+                        <span class="col-xs-6">
+                            <label class="col-xs-12">Confirm Password </label><input type="password" name="edit_Password" [(ngModel)]="editUser.ConfirmPassword" class="col-xs-12 form-control" />
+                        </span>
+
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="button" name="Edit User" value="Edit" (click)="Editing()" *ngIf="!edit" class="btn btn-info" />
+                        <input type="submit" name="Update User" value="Update" *ngIf="edit" class="btn btn-info" />
+
+                        <input type="button" name="Delete User" value="Delete" (click)="Deleting()" *ngIf="!edit" class="btn btn-danger" />
+                        <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" *ngIf="edit" class="btn btn-danger" />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
+
     <div *ngIf="create" class="row">
-        <h3>Create User</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide" />
+        <h3>Create User</h3><input type="button" name="Hide Details" (click)="Hiding()" value="Hide" class="btn btn-danger pull-right"/>
         <form (ngSubmit)="Submiting(createUser)">
             <table border="1" class="table">
                 <tr>
                     <td><label>Email ID(Also your UserId)</label></td>
-                    <td><input type="text" name="EMail_Id" [(ngModel)]="createUser.UserName" required /></td>
+                    <td><input type="text" name="EMail_Id" [(ngModel)]="createUser.UserName" required  class="form-control" /></td>
                 </tr>
                 <tr>
                     <td><label>Role</label></td>
                     <td>
-                        <select name="Role" [(ngModel)]="createUser.Role" required>
+                        <select name="Role" [(ngModel)]="createUser.Role" required class="form-control" >
                             <option value="admin">Admin</option>
                             <option value="User">User</option>
                         </select>
@@ -180,7 +184,7 @@
                 <tr>
                     <td><label>Is Active</label></td>
                     <td>
-                        <select name="Status" [(ngModel)]="createUser.Status" required>
+                        <select name="Status" [(ngModel)]="createUser.Status" required class="form-control" >
                             <option value="true">True</option>
                             <option value="false">False</option>
                         </select>
@@ -188,16 +192,16 @@
                 </tr>
                 <tr>
                     <td><label>First Name</label></td>
-                    <td><input type="text" name="First Name" [(ngModel)]="createUser.FirstName" required /></td>
+                    <td><input type="text" name="First Name" [(ngModel)]="createUser.FirstName" required  class="form-control" /></td>
                 </tr>
                 <tr>
                     <td><label>Last Name</label></td>
-                    <td><input type="text" name="Last Name" [(ngModel)]="createUser.LastName" required /></td>
+                    <td><input type="text" name="Last Name" [(ngModel)]="createUser.LastName" required  class="form-control" /></td>
                 </tr>
                 <tr>
                     <td><label>Gender</label></td>
                     <td>
-                        <select name="Gender" [(ngModel)]="createUser.Gender" required>
+                        <select name="Gender" [(ngModel)]="createUser.Gender" required class="form-control" >
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
@@ -205,31 +209,31 @@
                 </tr>
                 <tr>
                     <td><label>Age</label></td>
-                    <td><input type="number" name="Age" [(ngModel)]="createUser.Age" required /></td>
+                    <td><input type="number" name="Age" [(ngModel)]="createUser.Age" required class="form-control" /></td>
                 </tr>
                 <tr>
                     <td><label>Phone Number</label></td>
-                    <td><input type="number" name="PhoneNumber" [(ngModel)]="createUser.PhoneNumber" required /></td>
+                    <td><input type="number" name="PhoneNumber" [(ngModel)]="createUser.PhoneNumber" required class="form-control"/></td>
                 </tr>
                 <tr>
                     <td><label>Address</label></td>
-                    <td><textarea name="Address" [(ngModel)]="createUser.Address" required></textarea></td>
+                    <td><textarea name="Address" [(ngModel)]="createUser.Address" required class="form-control" ></textarea></td>
                 </tr>
                 <tr>
                     <td><label>Password</label></td>
                     <td>
                         <span class="col-xs-6">
-                            <label class="col-xs-12">Password</label> <input type="password" name="Password" [(ngModel)]="createUser.Password" required class="col-xs-12" />
+                            <label class="col-xs-12">Password</label> <input type="password" name="Password" [(ngModel)]="createUser.Password" required class="col-xs-12 form-control"  />
                         </span>
                         <span class="col-xs-6">
-                            <label class="col-xs-12"> Confirm Password</label><input type="password" name="Password" [(ngModel)]="createUser.ConfirmPassword" required class="col-xs-12" />
+                            <label class="col-xs-12"> Confirm Password</label><input type="password" name="Password" [(ngModel)]="createUser.ConfirmPassword" required class="col-xs-12 form-control" />
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3" align="center">
-                        <input type="submit" name="Edit User" value="Create"/>
-                        <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" />
+                        <input type="submit" name="Edit User" value="Create" class="btn btn-info"/>
+                        <input type="button" name="Cancel User" value="Cancel" (click)="Canceling()" class="btn btn-danger" />
                     </td>
                 </tr>
             </table>
@@ -237,6 +241,5 @@
 
 </div>
 
-  
 
 </div>

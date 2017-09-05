@@ -34,7 +34,6 @@ export class userManagementComponent implements OnInit {
         this.editUser.Gender = this.user.Gender;
         this.editUser.PhoneNumber = this.user.PhoneNumber;
         this.editUser.Status = this.user.Status;
-
     }
 
     Editing() {
@@ -48,8 +47,6 @@ export class userManagementComponent implements OnInit {
         this.editUser.Gender = this.user.Gender;
         this.editUser.PhoneNumber = this.user.PhoneNumber;
         this.editUser.Status = this.user.Status;
-
-      
     }
     Canceling() {
         this.edit = false;
