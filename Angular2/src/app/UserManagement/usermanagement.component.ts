@@ -7,20 +7,19 @@ import { userManagementService } from "./usermanagement.service";
     templateUrl: "./app/UserManagement/usermanagement.component.html"
 })
 
-export class userManagementComponent implements OnInit {
+export class userManagementComponent implements OnInit
+{
     ulist: any = [];
     user: any = null;
     edit: boolean = false;
     create: boolean = false;
     editUser: any = {};
     createUser: any = {};
-    constructor(private _urserManagement: userManagementService) {
+    constructor(private _urserManagement: userManagementService) { }
 
-    }
     ngOnInit() {
-        this._urserManagement.getUsers(null).subscribe((res) => { this.ulist = res; });
+        this._urserManagement.getUsers(null).subscribe((res) => { this.ulist = res; }, (error) => { if (error.status == '401') { alert("You are not Authorized for this data. Please Consult Admin for permission"); };});
     }
-
 
     getUser(obj: any) {
         this.create = false;
@@ -48,30 +47,30 @@ export class userManagementComponent implements OnInit {
         this.editUser.PhoneNumber = this.user.PhoneNumber;
         this.editUser.Status = this.user.Status;
     }
+
     Canceling() {
         this.edit = false;
         this.create = false;
         this.editUser = {};
         this.createUser = {};
     }
+
     Updating() {
         console.log("Updating");
-        if (this.editUser.Password != this.editUser.ConfirmPassword) { this.Editing(); }
-        else {
-            
+        if (this.editUser.Password != this.editUser.ConfirmPassword) { alert("Password Doesn't match"); this.Editing(); }
+        else {         
             var ur = this.user;
             var lur = this.editUser;
-            this._urserManagement.editUser(this.editUser).subscribe((res) => { alert("Updated Successfully"); lur = ur; console.log(res); this.ngOnInit(); }, function (error) { console.log(error); });
+            this._urserManagement.editUser(this.editUser).subscribe((res) => { alert("Updated Successfully"); lur = ur; console.log(res.status); this.ngOnInit(); }, function (error) { if (error.status == '401') { alert("You are not Authorized for this data. Please Consult Admin for permission"); }; console.log(error.statusText); });
             this.Canceling();
             this.Hiding();
-            
         }
        
     }
+
     Deleting() {
         if (confirm("Are you sure you want to delete user : " + this.editUser.UserName + " ?")) {
-
-            this._urserManagement.deleteUser(this.editUser.UserName).subscribe((res) => { alert("Deleted Successfully"); console.log(res); this.ngOnInit(); }, function (error) { console.log(error) });;
+            this._urserManagement.deleteUser(this.editUser.UserName).subscribe((res) => { alert("Deleted Successfully"); console.log(res.status); this.ngOnInit(); }, function (error) { if (error.status == '401') { alert("You are not Authorized for this data. Please Consult Admin for permission"); }; console.log(error.statusText) });;
             this.Canceling();
             this.Hiding();
         }      
@@ -82,16 +81,15 @@ export class userManagementComponent implements OnInit {
         this.create = false;
     }
 
-    Creating() {
-        
+    Creating() {    
         this.create = true;
         this.user = null;
         this.edit = false;
     }
+
     Submiting(obj: any) {
         this.createUser.Email = this.createUser.UserName;
-        this._urserManagement.createUser(obj).subscribe((res) => { console.log(res); this.create = false; this.ngOnInit(); });
-        
+        this._urserManagement.createUser(obj).subscribe((res) => { console.log(res); this.create = false; this.ngOnInit(); });       
     }
  
 }

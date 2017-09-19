@@ -24,7 +24,9 @@ var userManagementComponent = (function () {
     }
     userManagementComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._urserManagement.getUsers(null).subscribe(function (res) { _this.ulist = res; });
+        this._urserManagement.getUsers(null).subscribe(function (res) { _this.ulist = res; }, function (error) { if (error.status == '401') {
+            alert("You are not Authorized for this data. Please Consult Admin for permission");
+        } ; });
     };
     userManagementComponent.prototype.getUser = function (obj) {
         this.create = false;
@@ -61,12 +63,15 @@ var userManagementComponent = (function () {
         var _this = this;
         console.log("Updating");
         if (this.editUser.Password != this.editUser.ConfirmPassword) {
+            alert("Password Doesn't match");
             this.Editing();
         }
         else {
             var ur = this.user;
             var lur = this.editUser;
-            this._urserManagement.editUser(this.editUser).subscribe(function (res) { alert("Updated Successfully"); lur = ur; console.log(res); _this.ngOnInit(); }, function (error) { console.log(error); });
+            this._urserManagement.editUser(this.editUser).subscribe(function (res) { alert("Updated Successfully"); lur = ur; console.log(res.status); _this.ngOnInit(); }, function (error) { if (error.status == '401') {
+                alert("You are not Authorized for this data. Please Consult Admin for permission");
+            } ; console.log(error.statusText); });
             this.Canceling();
             this.Hiding();
         }
@@ -74,7 +79,9 @@ var userManagementComponent = (function () {
     userManagementComponent.prototype.Deleting = function () {
         var _this = this;
         if (confirm("Are you sure you want to delete user : " + this.editUser.UserName + " ?")) {
-            this._urserManagement.deleteUser(this.editUser.UserName).subscribe(function (res) { alert("Deleted Successfully"); console.log(res); _this.ngOnInit(); }, function (error) { console.log(error); });
+            this._urserManagement.deleteUser(this.editUser.UserName).subscribe(function (res) { alert("Deleted Successfully"); console.log(res.status); _this.ngOnInit(); }, function (error) { if (error.status == '401') {
+                alert("You are not Authorized for this data. Please Consult Admin for permission");
+            } ; console.log(error.statusText); });
             ;
             this.Canceling();
             this.Hiding();

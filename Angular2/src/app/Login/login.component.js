@@ -22,7 +22,6 @@ var loginComponent = (function () {
     loginComponent.prototype.clicked = function () {
         var v = this;
         this._loginService.getToken(this.userName, this.password).subscribe(function (res) {
-            debugger;
             console.log(res.access_token);
             console.log(res.userName);
             localStorage.setItem("access_token", res.access_token);
